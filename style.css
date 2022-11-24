@@ -2,19 +2,23 @@
 
 body{
     color: white;
-    background-image: linear-gradient(to right, rgb(0, 0, 98) , white );
+    background-image: linear-gradient(to right, rgb(0, 0, 53) , white );
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* margin: 0; */
     
 }   
 
 .conteudo{
-    margin: 0 auto;
-    width: 100%;
+    margin: 0;
+    width: 85%;
     margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    border: 3px solid rgb(104, 111, 255);
 }
 
 .topo{
@@ -57,6 +61,7 @@ body{
     border-radius: 10px;
     height: 30px;
     align-items: center;
+    cursor: pointer;
 
 }
 .botao:hover{
@@ -64,18 +69,14 @@ body{
     color: white;
 }
 
-.conteudo-2{
-
-    
-}
-
 .listaProdutos{
     display: flex;
     margin-left: 320px;
-    width: 600px;
-    height: 300px;
+    width: 45%;
+    height: 200px;
     background-color: rgb(44, 44, 44);
     border-radius: 20px;
+    box-shadow: 10px 10px rgb(0,0,0,0.3);
     /* margin-top: 2        0px; */
     /* margin:auto; */
     
@@ -83,7 +84,7 @@ body{
 }
 
 .lista{
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 30px;
     color: white;
 }
@@ -116,14 +117,15 @@ body{
     background-color: gray;
 }
 
-.totalCompras{
+.totalCompras h3{
     margin-left: 300px;
-    /* justify-content: end; */
 }
 
-.buttons{
-    /* margin: 0 20px; */
+.totalCompras h2{
+    margin-top: 0%;
+    margin-left: 495px;
 }
+
 
 #janelaEdicao{
     position: fixed;
