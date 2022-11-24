@@ -103,9 +103,11 @@ function somar(idProduto){
 }
 
 btnInserirTotal.addEventListener('click', (e) =>{
-    let valorDoItem = valorProduto.value;
-    total.innerHTML = 'Valor: '+ valorDoItem;
-    console.log(valorDoItem); 
+    alert("Funciona")
+    
+    // let valorDoItem = valorProduto.value;
+    // total.innerHTML = 'Valor: '+ valorDoItem;
+    // console.log(valorDoItem); 
 })
 
 function excluir (idProduto){

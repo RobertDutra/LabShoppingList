@@ -15,10 +15,10 @@ body{
 
 .conteudo{
     margin: 0;
-    width: 85%;
+    width: 100%;
     margin-top: 50px;
     /* margin-bottom: 50px; */
-    border: 3px solid rgb(104, 111, 255);
+    /* border: 3px solid rgb(104, 111, 255); */
 }
 
 .topo{
@@ -71,22 +71,24 @@ body{
 
 .listaProdutos{
     display: flex;
-    margin-left: 320px;
-    width: 45%;
-    height: 200px;
+    margin-left: 260px;
+    width: 46%;
+    height: 250px;
     background-color: rgb(44, 44, 44);
     border-radius: 20px;
     box-shadow: 10px 10px rgb(0,0,0,0.3);
     /* margin-top: 2        0px; */
     /* margin:auto; */
+    overflow: auto;
     
     
 }
 
 .lista{
-    margin-top: 30px;
-    margin-left: 30px;
+    margin-top: 8px;
+    margin-left: 20px;
     color: white;
+    display: flex;
 }
 
 .listaDeCompra{
@@ -101,29 +103,43 @@ body{
     margin-top: 10px;
     padding: 0; 
     margin-left: 10px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* align-items: center; */
     color: white    ;
     /* background-color: rgb(71, 71, 71); */
     border-radius: 20px;
 }
 
+.textoProduto{
+    display: flex;
+    margin-left: 10px;
+}
+
+
+
 .btnAcao{
     border-radius: 20px;
     width: 30px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .btnAcao:hover{
     background-color: gray;
 }
 
-.totalCompras h3{
-    margin-left: 300px;
+.totalCompras{
+    font-size: 1.2rem;
+    /* font-weight: 550; */
+    color: black;
 }
-
+.totalCompras h3{
+    margin-left: 950px;
+    margin-top: -180px;
+}
 .totalCompras h2{
-    margin-top: 0%;
-    margin-left: 495px;
+    margin-left: 1000px;
+    margin-top: -20px;
 }
 
 
