@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabShoppingList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    
+</head>
+<body>
+    <div class="conteudo">
+        <h1 class="titulo">Inserir item na lista:</h1>  
+        <div class="topo">
+            <input  id="produto" type="text" required="" placeholder="Adicione um novo produto" maxlength="64" minlength="8">
+            <button class = "botao" type="button" id="btn" >Inserir</button>
+        </div>
+        <div class="conteudo-2">
+            <div class="listaProdutos">   
+                <span class="lista">Lista de compras</span>
+                <ul class="listaDeCompra"></ul>    
+            </div>
+            <div class="totalCompras">
+                <h3 >Total das compras: <strong>R$</strong> </h3>
+                <h2 id="total">0.00</h2>
+            </div>  
+        </div> 
+             
+    </div>
+
+    <div id="janelaEdicao">
+        <button id="janelaEdicaoBtnFechar">
+            <i class="fa fa-remove"></i>
+        </button>
+        <h2 id="nomeProduto">Produto</h2>
+        <hr>
+        <form>
+            <div class="frm-linha">
+                <label for="nome">Valor R$</label>
+                <input type="number" id="valorDoProduto">
+            </div>
+            <div class="frm-linha">
+                <button id="btnInserirTotal">Inserir</button>
+            </div>
+        </form>
+    </div>
+    <div id="janelaEdicaoFundo"></div>
+    
+    <script src="index.js"></script>
+    
+    
+</body>
+</html>
