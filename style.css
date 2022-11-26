@@ -41,10 +41,10 @@ body{
 .topo input{
     display: flex;
     width: 500px;
-    height: 27px;
+    height: 30px;
     border-radius: 10px;
     font-size: 16px;
-    border: 3px solid rgb(22, 26, 98);
+    border: 2px solid rgb(22, 26, 98);
     outline: none;
     font-size: 1.2rem;
     color: black;
@@ -69,6 +69,14 @@ body{
     color: white;
 }
 
+.error{
+    border: 2px solid red !important;
+}
+
+.error ::placeholder{
+    color: red;
+}
+
 .listaProdutos{
     display: flex;
     margin-left: 260px;
@@ -86,9 +94,10 @@ body{
 
 .lista{
     margin-top: 8px;
-    margin-left: 20px;
+    margin-left: 265px;
     color: white;
     display: flex;
+    font-size: 18px;
 }
 
 .listaDeCompra{
@@ -134,11 +143,11 @@ body{
     color: black;
 }
 .totalCompras h3{
-    margin-left: 950px;
-    margin-top: -180px;
+    margin-left: 990px;
+    margin-top: -240px;
 }
 .totalCompras h2{
-    margin-left: 1000px;
+    margin-left: 1050px;
     margin-top: -20px;
 }
 

@@ -1,42 +1,44 @@
 let lista = document.querySelector('.listaDeCompra');
-let produto = document.querySelector('#produto');
-let botao = document.querySelector('#btn');
+let inputProduto = document.querySelector('#inputProduto');
+let btnAdicionar = document.querySelector('#btn');
 let janelaEdicao = document.querySelector('#janelaEdicao');
 let janelaEdicaoFundo = document.querySelector('#janelaEdicaoFundo');
 let btnFechar = document.querySelector('#janelaEdicaoBtnFechar');
 let btnInserirTotal = document.querySelector('#btnInserirTotal');
 let valorProduto = document.querySelector('#valorDoProduto');
 let total = document.querySelector('#total');
+const KEY_CODE_ENTER = 13;
+let dbProdutos = [];
 
-botao.addEventListener('click', (e) => {
-        
-    let produtoDigitado = produto.value;
+obterProdutosLocalStorage();
+renderizarListaProdutosHtml();
+
+btnAdicionar.addEventListener('click', (e) => {
+    let produtoDigitado = inputProduto.value;
     if(produtoDigitado == ''){
         alert("Produto não digitado!")
     }
+
     else{
         let item = {
-            nome: produto.value,
+            nome: inputProduto.value,
             id : gerarId(),
         }
         ;
         adicionarProduto(item);
-        // gif = '<img src="gifs-de-sucesso-2.gif"/>'
-        // msg =  gif + "<p>Adicionado com sucesso.</p>" ;
-        // prompt(gif)
-        // document.write(msg);
     }
     
 });
 
-produto.addEventListener('keyup', (e) => {
-    if(e.keyCode === 13){
+inputProduto.addEventListener('keyup', (e) => {
+    if(e.keyCode === KEY_CODE_ENTER){
         let item = {
-            nome: produto.value,
+            nome: inputProduto.value,
             id : gerarId(),
         };
 
         adicionarProduto(item);
+        
     }
 })
 
@@ -49,10 +51,9 @@ btnFechar.addEventListener('click', (e) =>{
 })
 
 function adicionarProduto(item){
-    let li = criarTagLi(item);
-    lista.appendChild(li);
-    produto.value = '';
-    produto.focus();
+    dbProdutos.push(item);
+    localStorage.setItem('listaDeProdutos' , JSON.stringify(dbProdutos));
+    renderizarListaProdutosHtml();
 }
 
 function criarTagLi(item){
@@ -105,24 +106,53 @@ function somar(idProduto){
 btnInserirTotal.addEventListener('click', (e) =>{
     alert("Funciona")
     
-    // let valorDoItem = valorProduto.value;
-    // total.innerHTML = 'Valor: '+ valorDoItem;
+    let valorDoItem = valorProduto.value;
+    total.innerHTML = 'Valor: '+ valorDoItem;
     // console.log(valorDoItem); 
 })
 
 function excluir (idProduto){
     let confirmacao = window.confirm('Tem certeza que deseja excluir? ')
     if(confirmacao){
+        debugger
+        const indiceProduto = dbProdutos.findIndex(p => p.id == idProduto);
+
+        if(indiceProduto < 0){
+            throw new Error ('Id do produto não encontrado!');
+        }
+
+        dbProdutos.splice(indiceProduto, 1);
+        localStorage.setItem('listaDeProdutos' , JSON.stringify(dbProdutos));
+
         let li = document.getElementById('' + idProduto + '');
-        console.log(li)
-        console.log(idProduto)
+
         if(li){
             lista.removeChild(li);
+        
             }
+        else{
+            alert("Produto não encontrado!")
+        }
     }
 }
 
 function alternarJanelaEdicao(){
     janelaEdicao.classList.toggle('abrir');
     janelaEdicaoFundo.classList.toggle('abrir');
+}
+
+function renderizarListaProdutosHtml(){
+    inputProduto.value = '';
+    inputProduto.focus();
+    lista.innerHTML = '';
+    for(let i= 0; i < dbProdutos.length; i++){
+        let li = criarTagLi(dbProdutos[i]);
+        lista.appendChild(li);
+    }
+}
+
+function obterProdutosLocalStorage(){
+    if(localStorage.getItem('listaDeProdutos')) {
+        dbProdutos = JSON.parse(localStorage.getItem('listaDeProdutos'));
+    }
 }
