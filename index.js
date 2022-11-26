@@ -16,6 +16,7 @@ obterProdutosLocalStorage();
 renderizarListaProdutosHtml();
 
 btnAdicionar.addEventListener('click', (e) => {
+    e.preventDefault();
     let produtoDigitado = inputProduto.value;
     if(produtoDigitado == ''){
         alert("Produto não digitado!")
@@ -25,11 +26,9 @@ btnAdicionar.addEventListener('click', (e) => {
         let item = {
             nome: inputProduto.value,
             id : gerarId(),
-        }
-        ;
+        };
         adicionarProduto(item);
     }
-    
 });
 
 inputProduto.addEventListener('keyup', (e) => {
@@ -38,9 +37,7 @@ inputProduto.addEventListener('keyup', (e) => {
             nome: inputProduto.value,
             id : gerarId(),
         };
-
         adicionarProduto(item);
-        
     }
 })
 
@@ -59,16 +56,14 @@ function adicionarProduto(item){
 }
 
 function criarTagLi(item){
-    
     let li = document.createElement('li');
     li.id = item.id;
     
     let input = document.createElement('input');
     input.classList.add('check');
     input.type = 'checkbox';
-    input.setAttribute('onclick', 'somar('+item.id+')')
+    input.setAttribute('onclick', 'somar('+item.id+')');
     
-
     let span = document.createElement('span');
     span.classList.add('textoProduto');
     span.innerHTML =  item.nome;
@@ -76,17 +71,11 @@ function criarTagLi(item){
     let div = document.createElement('div');
     div.classList.add('buttons');
 
-    // let btnEditar = document.createElement('button');
-    // btnEditar.classList.add('btnAcao');
-    // btnEditar.innerHTML = '<i class="fa fa-pencil"></i>';
-    // btnEditar.setAttribute('onclick', 'editar('+item.id+')');
-
     let btnExcluir = document.createElement('button');
     btnExcluir.classList.add('btnAcao');
     btnExcluir.innerHTML = '<i class="fa fa-trash"></i>';
     btnExcluir.setAttribute('onclick', 'excluir('+item.id+')');
 
-    // div.appendChild(btnEditar);
     div.appendChild(btnExcluir);
 
     li.appendChild(input);
@@ -102,15 +91,12 @@ function somar(idProduto){
         let produto  = dbProdutos.find(p => p.id == idProduto);
         document.getElementById('nomeProduto').innerHTML = 'Valor ' + produto.nome + ":"; 
         console.log(valor);
-        // 
         console.log(produto.nome);
     }
-
 }
 
 btnInserirTotal.addEventListener('click', (e) =>{
     e.preventDefault();
-    
     if(inputValorDoProduto.value == ''){
         alert("Valor do produto não digitado!");
     }
@@ -121,7 +107,6 @@ btnInserirTotal.addEventListener('click', (e) =>{
         inputValorDoProduto.value = "";
         alternarJanelaEdicao();
         }
-    
 })
 
 function adicionarValorProduto(valorDoProduto){
@@ -131,14 +116,12 @@ function adicionarValorProduto(valorDoProduto){
 }
 
 function alterarTotal(){
-
     let valorTotalProdutos = 0;
     for(let i = 0; i < dbValores.length; i++){
         valorTotalProdutos += dbValores[i];
     }
 
     document.getElementById('valorTotal').innerHTML = "R$ " + valorTotalProdutos.toFixed(2);
-    //  h2;
 }
 
 
