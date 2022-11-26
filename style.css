@@ -1,28 +1,38 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
+@media (max-width: 600px)
+{
+  .facet_sidebar
+   {
+    display: none;
+   }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    }
+
 body{
     color: white;
     background-image: linear-gradient(to right, rgb(0, 0, 53) , white );
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
-    /* text-align: center; */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin: 0; */
-    
 }   
 
 .conteudo{
     margin: 0;
     width: 100%;
     margin-top: 50px;
-    /* margin-bottom: 50px; */
-    /* border: 3px solid rgb(104, 111, 255); */
+
 }
 
 .topo{
-    width: 100vw;
     height: 100v;
     display: flex;
     margin-left: 25%;
@@ -48,7 +58,6 @@ body{
     outline: none;
     font-size: 1.2rem;
     color: black;
-    /* padding:    3px 100px; */
 }
 
 .botao{
@@ -85,8 +94,6 @@ body{
     background-color: rgb(44, 44, 44);
     border-radius: 20px;
     box-shadow: 10px 10px rgb(0,0,0,0.3);
-    /* margin-top: 2        0px; */
-    /* margin:auto; */
     overflow: auto;
     
     
@@ -148,7 +155,7 @@ body{
 }
 .totalCompras h2{
     margin-left: 1050px;
-    margin-top: -20px;
+    margin-top: -10px;
 }
 
 .textoTotal{

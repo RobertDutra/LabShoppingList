@@ -12,7 +12,6 @@ const KEY_CODE_ENTER = 13;
 let dbProdutos = [];
 let dbValores = [];
 
-alterarTotal();
 obterProdutosLocalStorage();
 renderizarListaProdutosHtml();
 
@@ -100,27 +99,34 @@ function somar(idProduto){
     let li = document.getElementById('' + idProduto + '');
     if(li){
         alternarJanelaEdicao();
+        let produto  = dbProdutos.find(p => p.id == idProduto);
+        document.getElementById('nomeProduto').innerHTML = 'Valor do ' + produto.nome; 
+        console.log(valor);
+        // 
+        console.log(produto.nome);
     }
 
 }
 
 btnInserirTotal.addEventListener('click', (e) =>{
+    e.preventDefault();
     
     if(inputValorDoProduto.value == ''){
         alert("Valor do produto não digitado!");
     }
     
     else{
-        let valorDoItem = inputValorDoProduto.value;
+        let valorDoItem = Number(inputValorDoProduto.value);
         adicionarValorProduto(valorDoItem);
         inputValorDoProduto.value = "";
-        
-    }
+        }
+    alternarJanelaEdicao();
 })
 
 function adicionarValorProduto(valorDoProduto){
     dbValores.push(valorDoProduto);
     localStorage.setItem('listaDeValores', JSON.stringify(dbValores));
+    alterarTotal();
 }
 
 function alterarTotal(){
@@ -130,7 +136,7 @@ function alterarTotal(){
         valorTotalProdutos += dbValores[i];
     }
 
-    document.querySelector('#valorTotal').innerHTML = "R$ " + valorTotalProdutos;
+    document.getElementById('valorTotal').innerHTML = "R$ " + valorTotalProdutos.toFixed(2);
     //  h2;
 }
 
