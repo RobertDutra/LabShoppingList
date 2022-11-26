@@ -100,7 +100,7 @@ function somar(idProduto){
     if(li){
         alternarJanelaEdicao();
         let produto  = dbProdutos.find(p => p.id == idProduto);
-        document.getElementById('nomeProduto').innerHTML = 'Valor do ' + produto.nome; 
+        document.getElementById('nomeProduto').innerHTML = 'Valor ' + produto.nome + ":"; 
         console.log(valor);
         // 
         console.log(produto.nome);
@@ -119,8 +119,9 @@ btnInserirTotal.addEventListener('click', (e) =>{
         let valorDoItem = Number(inputValorDoProduto.value);
         adicionarValorProduto(valorDoItem);
         inputValorDoProduto.value = "";
+        alternarJanelaEdicao();
         }
-    alternarJanelaEdicao();
+    
 })
 
 function adicionarValorProduto(valorDoProduto){
