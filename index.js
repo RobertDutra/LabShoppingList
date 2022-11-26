@@ -5,11 +5,14 @@ let janelaEdicao = document.querySelector('#janelaEdicao');
 let janelaEdicaoFundo = document.querySelector('#janelaEdicaoFundo');
 let btnFechar = document.querySelector('#janelaEdicaoBtnFechar');
 let btnInserirTotal = document.querySelector('#btnInserirTotal');
-let valorProduto = document.querySelector('#valorDoProduto');
-let total = document.querySelector('#total');
+let inputValorDoProduto = document.querySelector('#valorDoProduto');
+
+let totalDasCompras = document.querySelector('totalCompras');
 const KEY_CODE_ENTER = 13;
 let dbProdutos = [];
+let dbValores = [];
 
+alterarTotal();
 obterProdutosLocalStorage();
 renderizarListaProdutosHtml();
 
@@ -94,8 +97,6 @@ function criarTagLi(item){
 }
 
 function somar(idProduto){
-    console.log(idProduto);
-    console.log(idProduto.value);
     let li = document.getElementById('' + idProduto + '');
     if(li){
         alternarJanelaEdicao();
@@ -104,12 +105,36 @@ function somar(idProduto){
 }
 
 btnInserirTotal.addEventListener('click', (e) =>{
-    alert("Funciona")
     
-    let valorDoItem = valorProduto.value;
-    total.innerHTML = 'Valor: '+ valorDoItem;
-    // console.log(valorDoItem); 
+    if(inputValorDoProduto.value == ''){
+        alert("Valor do produto não digitado!");
+    }
+    
+    else{
+        let valorDoItem = inputValorDoProduto.value;
+        adicionarValorProduto(valorDoItem);
+        inputValorDoProduto.value = "";
+        
+    }
 })
+
+function adicionarValorProduto(valorDoProduto){
+    dbValores.push(valorDoProduto);
+    localStorage.setItem('listaDeValores', JSON.stringify(dbValores));
+}
+
+function alterarTotal(){
+
+    let valorTotalProdutos = 0;
+    for(let i = 0; i < dbValores.length; i++){
+        valorTotalProdutos += dbValores[i];
+    }
+
+    document.querySelector('#valorTotal').innerHTML = "R$ " + valorTotalProdutos;
+    //  h2;
+}
+
+
 
 function excluir (idProduto){
     let confirmacao = window.confirm('Tem certeza que deseja excluir? ')

@@ -151,6 +151,10 @@ body{
     margin-top: -20px;
 }
 
+.textoTotal{
+    margin-left: 1050px;
+    margin-top: -20px;
+}
 
 #janelaEdicao{
     position: fixed;
