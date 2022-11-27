@@ -53,6 +53,7 @@ function adicionarProduto(item){
     dbProdutos.push(item);
     localStorage.setItem('listaDeProdutos' , JSON.stringify(dbProdutos));
     renderizarListaProdutosHtml();
+    alert("Produto adicionado com sucesso.")
 }
 
 function criarTagLi(item){
@@ -90,8 +91,6 @@ function somar(idProduto){
         alternarJanelaEdicao();
         let produto  = dbProdutos.find(p => p.id == idProduto);
         document.getElementById('nomeProduto').innerHTML = 'Valor ' + produto.nome + ":"; 
-        console.log(valor);
-        console.log(produto.nome);
     }
 }
 
@@ -105,13 +104,13 @@ btnInserirTotal.addEventListener('click', (e) =>{
         let valorDoItem = Number(inputValorDoProduto.value);
         adicionarValorProduto(valorDoItem);
         inputValorDoProduto.value = "";
+        inputValorDoProduto.focus();
         alternarJanelaEdicao();
         }
 })
 
 function adicionarValorProduto(valorDoProduto){
     dbValores.push(valorDoProduto);
-    localStorage.setItem('listaDeValores', JSON.stringify(dbValores));
     alterarTotal();
 }
 
@@ -124,12 +123,9 @@ function alterarTotal(){
     document.getElementById('valorTotal').innerHTML = "R$ " + valorTotalProdutos.toFixed(2);
 }
 
-
-
 function excluir (idProduto){
     let confirmacao = window.confirm('Tem certeza que deseja excluir? ')
     if(confirmacao){
-        debugger
         const indiceProduto = dbProdutos.findIndex(p => p.id == idProduto);
 
         if(indiceProduto < 0){
